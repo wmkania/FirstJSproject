@@ -5,7 +5,7 @@ let pokemonList=[
 ];
 
 for (let i = 0; i < pokemonList.length; i++) {
-        document.write(pokemonList[i].name);
+        document.write("<p>" + pokemonList[i].name + "</p>");
     if(pokemonList[i].height >= 7){
       result = "This is the biggest pokemon";
       document.write("This is the biggest pokemon!");
