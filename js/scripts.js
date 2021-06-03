@@ -23,6 +23,9 @@ function getAll () {
   };
 })();
 
+console.log(pokemonRepository.getAll());
+pokemonRepository.add({ name: 'Eve' });
+console.log(pokemonRepository.getAll());
 
 pokemonRepository.getAll().forEach(function(pokemon) {
   document.write("<p>"+ "This is " + " " + pokemon.name + " " + "and its type is "+ " " + pokemon.type + "." + "</p>");
