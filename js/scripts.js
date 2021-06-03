@@ -4,12 +4,10 @@ let pokemonList=[
 {name: "jigglypuff", height: 2, type: ['fairy', 'normal']}
 ];
 
-for (let i = 0; i < pokemonList.length; i++) {
-        document.write("<p>" + pokemonList[i].name + "</p>");
-    if(pokemonList[i].height >= 7){
-      result = "This is the biggest pokemon";
-      document.write("This is the biggest pokemon!");
-    }
-    document.write("<br/>");
+pokemonList.forEach(function(pokemon) {
+  document.write("<p>"+ "This is " + " " + pokemon.name + " " + "and its type is "+ " " + pokemon.type + "." + "</p>");
+});
 
-}
+pokemonList.forEach(function(pokemon) {
+  console.log('This is' + ' ' + pokemon.name + ' and its type is ' + pokemon.type + '.');
+});
