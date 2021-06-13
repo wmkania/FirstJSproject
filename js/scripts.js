@@ -28,8 +28,17 @@ pokemonRepository.add({ name: 'Eve' });
 console.log(pokemonRepository.getAll());
 
 pokemonRepository.getAll().forEach(function(pokemon) {
-  document.write("<p>"+ "This is " + " " + pokemon.name + " " + "and its type is "+ " " + pokemon.type + "." + "</p>");
+  let pokemonlist = document.querySelector('.pokemon-list');
+  let listItem = document.createElement('li');
+  let button = document.createElement('button');
+  button.innerText = 'placeholder';
+  button.classList.add('button-class');
+  listItem.appendChild(button);
+  pokemonList.appendChild(listItem);
+
 });
+
+
 
 pokemonRepository.getAll().forEach(function(pokemon) {
   console.log('This is' + ' ' + pokemon.name + ' and its type is ' + pokemon.type + '.');
