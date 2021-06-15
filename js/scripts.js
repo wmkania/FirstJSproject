@@ -3,6 +3,7 @@ var pokemonList = [
 {name: "bulbasaur", height: 7, type: ['grass', 'poison']},
 {name: "squirtle", height: 4, type: 'water'},
 {name: "jigglypuff", height: 2, type: ['fairy', 'normal']},
+{name: "Pikachu", height: 1, type: ['electricity']},
 ];
 
 
@@ -22,21 +23,30 @@ function addListItem(pokemon){
   button.classList.add('button-class');
   listItem.appendChild(button);
   pokemonList.appendChild(listItem);
+  button.addEventListener("click", function (showDetails) {
+  console.log(pokemon.name);
+  });
+
+}
+
+function showDetails(pokemon) {
+  console.log(pokemon.name);
 }
 
 return {
   add: add,
   addListItem: addListItem,
-  getAll: getAll
+  getAll: getAll,
+
   };
+
 })();
 
-console.log(pokemonRepository.getAll());
-pokemonRepository.addListItem ({name: 'Eve'});
-console.log(pokemonRepository.getAll());
+
 
 
 pokemonRepository.getAll().forEach(function(pokemon) {
 pokemonRepository.addListItem(pokemon);
+
 
 });
