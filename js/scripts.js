@@ -24,8 +24,12 @@ function addListItem(pokemon){
   });
 
 }
+function showLoadingMessage(){
+  console.log('Data is being loaded.')
+}
 
 function loadList() {
+ showLoadingMessage()
     return fetch(apiUrl).then(function (response) {
       return response.json();
     }).then(function (json) {
@@ -43,6 +47,7 @@ function loadList() {
   }
 
 function loadDetails(item) {
+   showLoadingMessage()
     let url = item.detailsUrl;
     return fetch(url).then(function (response) {
       return response.json();
@@ -67,7 +72,8 @@ return {
   getAll: getAll,
   loadList: loadList,
   loadDetails: loadDetails,
-  showDetails: showDetails
+  showDetails: showDetails,
+  showLoadingMessage: showLoadingMessage
 }
 
 })();
