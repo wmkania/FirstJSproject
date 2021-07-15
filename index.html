@@ -4,16 +4,21 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>First JS project</title>
+	<title>Pokedex</title>
 	<link rel="stylesheet" type="text/css" href=css/styles.css>
 
 </head>
 
 <body>
 	
-	<div><h1>Pokedex</h1>
+	<h1>Pokedex</h1>
+  <div class='container'>
 		<ul class='pokemon-list'></ul>
-	</div>
+  </div>
+
+  <div id='modal-container'>
+    <div class='modal'></div>
+  </div>
 	
   <script src="js/promise-polyfill.js"></script>
 	<script src="js/fetch-polyfill.js"></script>
