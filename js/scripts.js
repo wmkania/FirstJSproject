@@ -1,120 +1,148 @@
 let pokemonRepository = (function () {
   let pokedexPokemonList = document.querySelector('.pokemon-list');
-  let modal = document.query('#modal-container');
-  let pokemonName = document.createElement('h1');
-});
+  let modalContainer = document.querySelector('#modal-container');
+  let modal = document.querySelector('.modal');
+
+
+let modalClose = document.createElement('button');
+    modalClose.classList.add('modal-close');
+let pokeName = document.createElement('h1');
+    pokeName.classList.add('Pokename');
+let pokeHeight = document.createElement('p');
+    pokeHeight.classList.add('Pokeheight');
+    let pokeType = document.createElement('p');
+    pokeType.classList.add('Poketype');
+
+let imageContainer = document.createElement('div');
+    imageContainer.classList.add('img-container');
+let pokeImage = document.createElement('img');
+    pokeImage.classList.add('PokeImage');
+
+
+let pokemonList = [];
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
 
 
 function add(pokemon) {
-  typeof pokemon == 'object' && 'name' in pokemon ? pokemonList.push(pokemon) : console.log('pokemon not found')
-  };
-
-
-function addListItem(pokemon) {
-  let pokemonItem = document.createElement('li');
-      pokemonItem.classList.add('group-list-item');
-  let pokemonButton = document.createElement('button');
-      pokemonButton.innerHTML = pokemon.name();
-      pokemonButton.type = 'button';
-  pokedexPokemonList.appendChild(pokemonItem);
-  pokemonItem.appendChild(pokemonButton);
-  pokemonButton.addEventListener('click', function () {
-    showDetails(pokemon);
-  });
-}
-
-
-
-function showDetails(pokemon) {
-  loadDetails(pokemon).then(function () {
-    pokemonName.innerHTML = pokemon.name;
-    pokemonHeight.innerHTML = 'Height: ' + pokemon.height;
-    pokemonType.innerHTML = 'Type: ' + pokemon.types;
-    pokeImage.src = pokemon.imageUrl;
-    });
-}
-
-
-function loadList() {
-const loading = document.createElement('p');
-loading.innerText = "loading"
-document.querySelector(".pokemon-list").append(loading);
-
-return fetch(apiUrl).then(function (response) {
-  return response.json();
-}).then(function (json) {
-  json.results.forEach(function (item) {
-    let pokemon = {
-      name: item.name,
-      detailsUrl: item.url,
-    };
-      add(pokemon);
-      });
-    }).catch(function (e) {
-      console.error(e);
-    });
-}
-
-function loadDetails(item) {
-    let url = item.detailsUrl;
-    return fetch(url).then(function (response) {
-      return response.json();
-    }).then(function (details) {
-      item.imageUrl = details.sprites.front_default;
-      item.height = details.height;
-      item.types = details.types[0].type.name;
-    }).catch(function (e) {
-      console.error(e);
-
-    });
-
-}
-
-     function search() {
-      let searchInput = document.querySelector('#search-bar');
-
-      searchInput.addEventListener('input', function() {
-        // Adds a Bootstrap class.
-        let pokemonList = document.querySelectorAll('.group-list-item');
-        let searchText = searchInput.value.toLowerCase();
-
-        pokemonList.forEach(function(pokemon) {
-          if (pokemon.innerText.toLowerCase().indexOf(searchText) > -1) {
-            pokemon.style.display = '';
-          } else {
-            pokemon.style.display = 'none';
-          }
-        });
-      });
+    if (
+      typeof pokemon === "object" &&
+      "name" in pokemon)
+     {
+      pokemonList.push(pokemon);
+    } else {
+      console.log("pokemon is not correct");
+    }
+  }
+    function getAll() {
+      return pokemonList;
     }
 
 
 
-modal.appendChild(pokemonName);
-modal.appendChild(pokeHeight);
-modal.appendChild(pokeType);
-modal.appendChild(imageContainer);
-imageContainer.appendChild(pokeImage);
+function addListItem(pokemon){
+  let pokemonList = document.querySelector('.pokemon-list');
+  let listItem = document.createElement('li');
+  let button = document.createElement('button');
+    button.innerText = pokemon.name.toUpperCase();
+    button.classList.add('button-class');
+
+  listItem.appendChild(button);
+  pokemonList.appendChild(listItem);
+  button.addEventListener("click", function (event) {
+  showDetails(pokemon);
+  });
+
+}
+
+function showModal() {
+       modalContainer.classList.add('is-visible');
+     }
+
+function hideModal() {
+       modalContainer.classList.remove('is-visible');
+     }
+
+modalClose.addEventListener('click' , hideModal);
+
+window.addEventListener('keydown', (e) => {
+    let modalContainer = document.querySelector('#modal-container');
+    if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+      hideModal();
+    }
+});
+
+ modalContainer.addEventListener('click', (e) => {
+  let target = e.target;
+  if (target === modalContainer) {
+    hideModal();
+  }
+});
+
+function showDetails(pokemon){
+   loadDetails(pokemon).then(function () {
+     pokeName.innerHTML = pokemon.name.toUpperCase();
+         pokeHeight.innerHTML = 'Height: ' + pokemon.height;
+         pokeType.innerHTML = 'Type: ' + pokemon.types.toUpperCase();
+         pokeImage.src = pokemon.imageUrl;
+         modalClose.innerHTML = "Close";
+         showModal();
+   });
+ }
+
+function loadList() {
+return fetch(apiUrl)
+     .then(response => response.json())
+     .then(json => {
+         json.results.forEach(function (item) {
+           let pokemon = {
+             name: item.name,
+           add(pokemon);
+           console.log(pokemon);
+           });
+    })
+     .catch(function (e) {
+       console.error(e);
+     })
+   }
 
 
+
+  function loadDetails(item) {
+     let url = item.detailsUrl;
+     return fetch(url).then(function (response) {
+       return response.json();
+     }).then(function (details) {
+       item.imageUrl = details.sprites.front_default;
+       item.height = details.height;
+       item.types = details.types[0].type.name;
+     }).catch(function (e) {
+       console.error(e);
+     });
+   }
+
+
+  modal.appendChild(modalClose);
+  modal.appendChild(pokeName);
+  modal.appendChild(pokeHeight);
+  modal.appendChild(pokeType);
+  modal.appendChild(imageContainer);
+  imageContainer.appendChild(pokeImage);
 
     return {
-    add: add,
-    addListItem: addListItem,
-    getAll: getAll,
-    loadList: loadList,
-    loadDetails: loadDetails,
-    showDetails: showDetails,
-    showLoadingMessage: showLoadingMessage
+     add: add,
+     getAll: getAll,
+     addListItem: addListItem,
+     loadList: loadList,
+     loadDetails: loadDetails,
+     showModal: showModal,
+     hideModal: hideModal
     };
-
 
 })();
 
-
-pokemonRepository.loadList().then (function(){
-  pokemonRepository.getAll().forEach(function(pokemon) {
-    pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function(){
+pokemonRepository.getAll().forEach(function (pokemon) {
+pokemonRepository.addListItem(pokemon);
   });
-
 });

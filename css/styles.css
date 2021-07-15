@@ -1,72 +1,99 @@
-
 body {
-  font-family: Verdana, sans-serif;
+   text-align: center;
+   color: black;
+   font-family: 'verdana', sans-serif;
+   background-color: lightgrey;
+
+ }
+
+ .button-class {
+   border: none;
+ }
+
+.pokemon-list{
+   list-style-type: none;
 }
 
-
-#modal-container {
- display: none;
-}
+.container {
+      display: grid;
+  }
 
 #modal-container.is-visible {
-  position: fixed;
-  padding: 20px;
-  box-sizing: border-box;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999; 
-  overflow: auto; 
-  display: grid;
-  text-align: center;
+   position: fixed;
+   padding: 20px;
+   box-sizing: border-box;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: white;
 }
+
+ /* to show it above other content */
+   z-index: 999;
+
+   /* to allow scrolling if the screen is not high enough*/
+   overflow: auto;
+
+   /* this is used to center the modal */
+   display: grid;
+   text-align: center;
+ }
+
 
 .modal {
-  margin: auto;
-  display: inline-block;
-  box-sizing: border-box;
-  background: #fff;
-  padding: 15px;
-  width: 100%;
-  max-width: 700px;
-  text-align: left;
-}
+   margin: auto;
+   display: inline-block;
+   box-sizing: border-box;
+   background: #C00;
+   padding: 15px;
+   width: 100%;
+   max-width: 300px;
+   max-height: 400px;
+   text-align: center;
+   border-radius: 25px;
+ }
 
-.modal-close {
-  float: right;
-  -webkit-appearance: none;
-  border: 0;
-  background: none;
-  color: #777;
-  text-decoration: underline;
-}
+ .modal-close {
+   float: right;
+   -webkit-appearance: none;
+   border: 0;
+   background: none;
+   color: #3B4CCA;
+   text-decoration: underline;
+   cursor: pointer;
+ }
 
-.modal h1 {
-  margin-top: 0;
-}
+ .modal h1 {
+   margin-top: 0;
+   color: white;
+ }
 
-.modal p {
-  margin-bottom: 0;
-}
+ .modal p {
+   margin-bottom: 0;
+   color: white;
+ }
 
+.img-container {
+      display: flex;
+      justify-content: center;
+  }
+ #modal-container {
+     display: none;
+ }
 
+ #modal-container.is-visible {
+     display: block;
+ }
 
-.button-class{
-  background-color:lightgrey;
-  border: none;
-  color: white;
-  padding: 15px 25px;
-  text-align: center;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px 5px;
-  -webkit-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-  cursor: pointer;
-  background-color: lightgrey;
-  color: white;
-  border: 2px dotted hotpink;
+.Pokeheight, .Poketype, .Pokename {
+     text-align: center;
+ }
 
-}
+ .Pokeheight, .Poketype {
+     font-size: 20px;
+ }
+
+ .Pokename {
+     font-size: 30px;
+ }
