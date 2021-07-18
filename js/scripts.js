@@ -4,18 +4,18 @@ let pokemonRepository = (function () {
   let modal = document.querySelector('.modal');
 
 
-let modalClose = document.createElement('button');
+  let modalClose = document.createElement('button');
     modalClose.classList.add('modal-close');
-let pokeName = document.createElement('h1');
+  let pokeName = document.createElement('h1');
     pokeName.classList.add('Pokename');
-let pokeHeight = document.createElement('p');
+  let pokeHeight = document.createElement('p');
     pokeHeight.classList.add('Pokeheight');
-    let pokeType = document.createElement('p');
+  let pokeType = document.createElement('p');
     pokeType.classList.add('Poketype');
 
-let imageContainer = document.createElement('div');
+  let imageContainer = document.createElement('div');
     imageContainer.classList.add('img-container');
-let pokeImage = document.createElement('img');
+  let pokeImage = document.createElement('img');
     pokeImage.classList.add('PokeImage');
 
 
@@ -88,24 +88,31 @@ function showDetails(pokemon){
          modalClose.innerHTML = "Close";
          showModal();
    });
+
+  modal.appendChild(modalClose);
+  modal.appendChild(pokeName);
+  modal.appendChild(pokeHeight);
+  modal.appendChild(pokeType);
+  modal.appendChild(imageContainer);
+  imageContainer.appendChild(pokeImage);
  }
 
 function loadList() {
-  return fetch(apiUrl).then(function (response) {
-    return response.json();
-  }).then(function (json) {
-    json.results.forEach(function (item) {
-      let pokemon = {
-        name: item.name,
-        detailsUrl: item.url,
-      };
-      add(pokemon);
-      console.log(pokemon);
-    });
-  }).catch(function (e) {
-    console.error(e);
-  })
-}
+    return fetch(apiUrl).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        let pokemon = {
+          name: item.name,
+          detailsUrl: item.url,
+        };
+        add(pokemon);
+        console.log(pokemon);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+  }
 
 
 
@@ -123,12 +130,6 @@ function loadList() {
    }
 
 
-  modal.appendChild(modalClose);
-  modal.appendChild(pokeName);
-  modal.appendChild(pokeHeight);
-  modal.appendChild(pokeType);
-  modal.appendChild(imageContainer);
-  imageContainer.appendChild(pokeImage);
 
     return {
      add: add,
