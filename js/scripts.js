@@ -17,6 +17,7 @@ var pokemonRepository = (function () {
   }
 
 
+
   function addListItem(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
 
@@ -87,8 +88,8 @@ var pokemonRepository = (function () {
         });
         if (item.types.includes("grass")) {
           $(".modal-header").css("color", "green");
-          $listItem.css("color", "lightgreen");
-          $(this).css('color', 'red');
+         $listItem.css("color", "lightgreen");
+        $(this).css('color', 'red');
         } else if (item.types.includes("fire")) {
           $(".modal-header").css("color", "red");
         } else if (item.types.includes("psychic")) {
