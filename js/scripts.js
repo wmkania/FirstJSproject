@@ -164,7 +164,6 @@ var pokemonRepository = (function () {
     modalBody.append(typesElement);
     modalBody.append(abilitiesElement);
   }
-
   return {
     add: add,
     getAll: getAll,
