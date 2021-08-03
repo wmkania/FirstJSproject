@@ -53,3 +53,14 @@ body {
   border-radius: 5px;
   margin: 5px;
 }
+
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+}
+
+.container > h4{
+  color: #a10622;
+}
