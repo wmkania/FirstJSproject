@@ -134,7 +134,6 @@ var pokemonRepository = (function () {
     let modalTitle = $(".modal-title");
     let modalHeader = $(".modal-header");
     $modalContainer = $("#modal-container");
-
     //modalHeader.empty();
     modalTitle.empty();
     modalBody.empty();
