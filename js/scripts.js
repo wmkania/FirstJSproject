@@ -17,7 +17,6 @@ var pokemonRepository = (function () {
   }
 
 
-
   function addListItem(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
 
