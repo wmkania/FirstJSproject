@@ -20,7 +20,7 @@ body {
  .button:hover,
  .button:focus {
   cursor: pointer;
-  color: #a10622;
+  background-color: #a10622;
  }
 
 
