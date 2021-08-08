@@ -20,8 +20,6 @@ var pokemonRepository = (function () {
     return pokemonList;
   }
 
-
-
   function addListItem(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
 
