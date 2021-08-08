@@ -1,3 +1,7 @@
+
+/* eslint-env jquery */
+/* global $ */
+
 var pokemonRepository = (function () {
   var pokemonList = [];
   var apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=20";
