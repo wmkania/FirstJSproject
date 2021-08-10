@@ -4,7 +4,9 @@
 
 var pokemonRepository = (function () {
   var pokemonList = [];
-  var apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=20";
+  const apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=20";
+  var searchInput = document.querySelector("#searchBar");
+
   function add(pokemon) {
     if (
       typeof pokemon === "object" &&
@@ -165,6 +167,21 @@ var pokemonRepository = (function () {
     modalBody.append(typesElement);
     modalBody.append(abilitiesElement);
   }
+
+  searchInput.addEventListener("input", function() {
+    let pokemonList = document.querySelectorAll("li");
+    let value = searchInput.value.toUpperCase();
+
+    pokemonList.forEach(function(pokemon) {
+      if (pokemon.innerText.toUpperCase().indexOf(value) > -1) {
+        pokemon.style.display = "";
+      } else {
+        pokemon.style.display = "none";
+      }
+    });
+  });
+
+
 
   return {
     add: add,
