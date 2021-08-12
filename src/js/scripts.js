@@ -4,7 +4,7 @@
 
 var pokemonRepository = (function () {
   var pokemonList = [];
-  const apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=20";
+  const apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=1200";
   var searchInput = document.querySelector("#searchBar");
 
   function add(pokemon) {
@@ -24,7 +24,8 @@ var pokemonRepository = (function () {
 
   function addListItem(pokemon) {
     pokemonRepository.loadDetails(pokemon).then(function () {
-
+      var listItem = document.createElement('li');
+          listItem.classList.add('group-list-item');
       var $row = $(".row");
       var $card = $('<div class="card" style="width:200px"></div>');
       var $image = $(
