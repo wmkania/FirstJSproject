@@ -3,7 +3,7 @@
 
 var pokemonRepository = (function () {
   var pokemonList = [];
-  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=20';
+  var apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=1200';
   function add(pokemon) {
     if (
       typeof pokemon === 'object' &&
